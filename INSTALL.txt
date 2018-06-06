@@ -1,0 +1,19 @@
+# INSTALL PyshC2 on Linux
+=======================================================================
+curl -sSL https://raw.githubusercontent.com/nettitude/PyshC2/master/Install.sh | bash
+
+# RUNNING PyshC2
+cd /opt/PyshC2/
+vim Config.py # Edit any config details
+
+In one terminal:
+screen -S C2Server
+sudo python /opt/PyshC2/C2Server.py
+
+In another terminal open Implant Handler:
+sudo python /opt/PyshC2/ImplantHandler.py
+
+# Optional for mutli user
+sudo python /opt/PyshC2/C2Viewer.py
+
+# RUNNING as SystemCTL Service, see pyshc2.service file for more information
