@@ -28,21 +28,26 @@ param(
 [Parameter(Mandatory=$false)][AllowEmptyString()][string]$proxyuser, 
 [Parameter(Mandatory=$false)][AllowEmptyString()][string]$proxypassword
 )
+$fw = Get-FirewallName -Length 15
+$script:firewallName = $fw
+$firewallName = $fw 
 
-$script:firewallName = Get-FirewallName -Length 15
+if ($Localhost.IsPresent){
+echo "[+] Using localhost parameter"
+$HTTPServer = "localhost"
+$daisyserver = "http://localhost"
+$NoFWRule = $true
+} else {
+$HTTPServer = "+"
+}
+
 $script:serverPort = $port
 if ($NoFWRule.IsPresent) {
     $fwcmd = "echo `"No firewall rule added`""
 }else {
     echo "Adding firewall rule name: $firewallName for TCP port $port"
+    echo "Netsh.exe advfirewall firewall add rule name=`"$firewallName`" dir=in action=allow protocol=TCP localport=$port enable=yes"
     $fwcmd = "Netsh.exe advfirewall firewall add rule name=`"$firewallName`" dir=in action=allow protocol=TCP localport=$port enable=yes"
-} 
-
-if ($Localhost.IsPresent){
-$HTTPServer = "localhost"
-$daisyserver = "http://localhost"
-} else {
-$HTTPServer = "+"
 }
 
 $fdsf = @"
