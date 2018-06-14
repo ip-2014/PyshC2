@@ -9,7 +9,7 @@ HostnameIP = "https://10.0.0.1"
 ServerPort = "443"
 DomainFrontHeader = "" # example df.azureedge.net
 DefaultSleep = "5"
-KillDate = "08/06/2018"
+KillDate = "08/06/2019"
 QuickCommand = "adsense/troubleshooter/1631343?id=Ndks8dmsPld"
 DownloadURI = "adsense/troubleshooter/1631343?id=Ndks8dmsPld"
 Sounds = "Yes"

